@@ -1,0 +1,29 @@
+# ── Broker API ────────────────────────────────────────
+kiteconnect>=5.0.1          # Official Zerodha Kite Connect SDK
+
+# ── Data & Indicators ─────────────────────────────────
+pandas>=2.0.0               # Data manipulation, candle building
+ta>=0.11.0                  # Technical indicators (EMA, RSI, VWAP) - replaces pandas-ta
+numpy>=1.24.0               # Numerical calculations
+
+# ── Web Dashboard ─────────────────────────────────────
+flask>=2.3.0                # Web server for dashboard
+flask-socketio>=5.3.0       # Real-time dashboard updates
+
+# ── Database ──────────────────────────────────────────
+sqlalchemy>=2.0.0           # ORM for SQLite
+
+# ── Scheduling ────────────────────────────────────────
+APScheduler>=3.10.0         # Pre-market, intel refresh, EOD jobs
+
+# ── Notifications ─────────────────────────────────────
+python-telegram-bot>=20.0   # Telegram alerts
+
+# ── Market Intelligence ───────────────────────────────
+requests>=2.28.0            # HTTP calls for market data
+beautifulsoup4>=4.11.0      # HTML parsing for NSE data
+
+# ── Utilities ─────────────────────────────────────────
+python-dotenv>=1.0.0        # Load .env config securely
+pytz>=2023.3                # IST timezone handling
+colorlog>=6.7.0             # Coloured console logs
