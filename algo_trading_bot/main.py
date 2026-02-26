@@ -4,7 +4,8 @@ main.py — AlgoBot Entry Point
 Starts the trading bot and web dashboard.
 
 Usage:
-    python main.py              # Start bot + dashboard (paper mode works without Zerodha)
+    python main.py              # Start bot + dashboard (PAPER mode - no Zerodha needed)
+    python main.py --live       # Start in LIVE mode (requires Zerodha credentials + 2FA)
     python main.py --check      # Validate config only
     python main.py --test-auth  # Test Zerodha login only
     python main.py --test-balance  # Test live balance fetch
@@ -264,6 +265,7 @@ if __name__ == "__main__":
     parser.add_argument("--check",        action="store_true", help="Validate configuration only")
     parser.add_argument("--test-auth",    action="store_true", help="Test Zerodha login")
     parser.add_argument("--test-balance", action="store_true", help="Test live balance fetch")
+    parser.add_argument("--live",         action="store_true", help="Start in LIVE trading mode (requires Zerodha credentials)")
     args = parser.parse_args()
 
     if args.check:
@@ -273,4 +275,8 @@ if __name__ == "__main__":
     elif args.test_balance:
         sys.exit(0 if test_balance() else 1)
     else:
+        # Override trade mode if --live flag is provided
+        if args.live:
+            config.DEFAULT_CONFIG["trade_mode"] = "live"
+            log.info("⚠️  LIVE MODE ENABLED — This will execute real trades!")
         start_bot()
